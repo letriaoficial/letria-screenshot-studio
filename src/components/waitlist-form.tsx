@@ -11,7 +11,7 @@ export function WaitlistForm() {
   const [consent, setConsent] = useState(false);
   const [pending, setPending] = useState(false);
   const [success, setSuccess] = useState(false);
-  const [errors, setErrors] = useState<{ email?: string; consent?: string; submit?: string }>({});
+  const [errors, setErrors] = useState<{ email?: string | undefined; consent?: string | undefined; submit?: string | undefined }>({});
   const emailRef = useRef<HTMLInputElement>(null);
   const consentRef = useRef<HTMLButtonElement>(null);
 
