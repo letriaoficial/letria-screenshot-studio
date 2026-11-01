@@ -14,13 +14,42 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      waitlist: {
+        Row: {
+          consent: boolean
+          consent_text: string
+          created_at: string
+          email: string
+          id: string
+          source: string
+        }
+        Insert: {
+          consent: boolean
+          consent_text: string
+          created_at?: string
+          email: string
+          id?: string
+          source?: string
+        }
+        Update: {
+          consent?: boolean
+          consent_text?: string
+          created_at?: string
+          email?: string
+          id?: string
+          source?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      join_waitlist: {
+        Args: { p_consent: boolean; p_consent_text: string; p_email: string }
+        Returns: undefined
+      }
     }
     Enums: {
       [_ in never]: never
