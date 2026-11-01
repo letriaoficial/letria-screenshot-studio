@@ -1,10 +1,11 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import type { ReactNode } from "react";
 import { SOCIAL_LINKS, PARENT_PROJECT_URL } from "@/config/social";
+import { WaitlistForm } from "@/components/waitlist-form";
 
 const TITLE = "LETRIA · Próximamente";
 const DESC =
-  "LETRIA llega pronto: consultoría e implantación de IA para pymes, profesionales y despachos.";
+  "La inteligencia artificial aplicada al trabajo real. Consultoría e implantación de IA para pymes, profesionales y despachos.";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -14,12 +15,12 @@ export const Route = createFileRoute("/")({
       { property: "og:title", content: TITLE },
       { property: "og:description", content: DESC },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "/" },
+      { property: "og:url", content: "https://letria-screenshot-studio.lovable.app" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: TITLE },
       { name: "twitter:description", content: DESC },
     ],
-    links: [{ rel: "canonical", href: "/" }],
+    links: [{ rel: "canonical", href: "https://letria-screenshot-studio.lovable.app" }],
   }),
   component: Index,
 });
@@ -83,6 +84,7 @@ function Index() {
           Estamos preparando letria.es. Consultoría e implantación de IA para pymes, profesionales y despachos. Sin jerga y paso a paso.
         </p>
         <p className="font-display text-xl italic text-accent sm:text-2xl">Entiende la IA. Aplícala.</p>
+        <WaitlistForm />
         <ul className="flex flex-wrap justify-center gap-3" aria-label="Redes sociales">
           {(Object.keys(SOCIAL_LINKS) as (keyof typeof SOCIAL_LINKS)[]).map((k) => (
             <li key={k}>
@@ -100,12 +102,14 @@ function Index() {
         </ul>
       </main>
 
-      <footer className="flex flex-col items-center gap-1 text-center text-sm text-muted-foreground sm:flex-row sm:justify-center sm:gap-3">
+      <footer className="flex flex-col items-center gap-1 text-center text-sm text-muted-foreground sm:flex-row sm:flex-wrap sm:justify-center sm:gap-3">
         <span>© 2026 LETRIA · letria.es</span>
         <span className="hidden sm:inline" aria-hidden="true">·</span>
         <a href={PARENT_PROJECT_URL} target="_blank" rel="noopener noreferrer" className="underline-offset-4 hover:text-foreground hover:underline focus-visible:outline-2 focus-visible:outline-ring">
           Un proyecto de Dígito Cero Formación
         </a>
+        <span className="hidden sm:inline" aria-hidden="true">·</span>
+        <Link to="/privacidad" className="underline-offset-4 hover:text-foreground hover:underline focus-visible:outline-2 focus-visible:outline-ring">Política de privacidad</Link>
       </footer>
     </div>
   );
