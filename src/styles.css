@@ -19,6 +19,8 @@
  */
 
 @theme inline {
+  --font-sans: "IBM Plex Sans", system-ui, sans-serif;
+  --font-display: "Newsreader", Georgia, serif;
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -63,25 +65,25 @@
 
 :root {
   --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.129 0.042 264.695);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.129 0.042 264.695);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.129 0.042 264.695);
-  --primary: oklch(0.208 0.042 265.755);
-  --primary-foreground: oklch(0.984 0.003 247.858);
-  --secondary: oklch(0.968 0.007 247.896);
-  --secondary-foreground: oklch(0.208 0.042 265.755);
-  --muted: oklch(0.968 0.007 247.896);
-  --muted-foreground: oklch(0.554 0.046 257.417);
-  --accent: oklch(0.968 0.007 247.896);
-  --accent-foreground: oklch(0.208 0.042 265.755);
+  --background: oklch(0.975 0.008 85);
+  --foreground: oklch(0.24 0.03 255);
+  --card: oklch(0.985 0.006 85);
+  --card-foreground: oklch(0.24 0.03 255);
+  --popover: oklch(0.985 0.006 85);
+  --popover-foreground: oklch(0.24 0.03 255);
+  --primary: oklch(0.3 0.04 255);
+  --primary-foreground: oklch(0.975 0.008 85);
+  --secondary: oklch(0.94 0.012 85);
+  --secondary-foreground: oklch(0.3 0.04 255);
+  --muted: oklch(0.94 0.012 85);
+  --muted-foreground: oklch(0.45 0.025 255);
+  --accent: oklch(0.52 0.12 45);
+  --accent-foreground: oklch(0.975 0.008 85);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.929 0.013 255.508);
-  --input: oklch(0.929 0.013 255.508);
-  --ring: oklch(0.704 0.04 256.788);
+  --border: oklch(0.86 0.015 85);
+  --input: oklch(0.86 0.015 85);
+  --ring: oklch(0.52 0.12 45);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -141,4 +143,16 @@
     background-color: var(--color-background);
     color: var(--color-foreground);
   }
+}
+
+@layer base {
+  body { font-family: var(--font-sans); }
+}
+
+@keyframes flow-dash { to { stroke-dashoffset: -40; } }
+@keyframes flow-pulse { 0%,100% { opacity: .55; } 50% { opacity: 1; } }
+@utility animate-flow { animation: flow-dash 6s linear infinite; }
+@utility animate-pulse-soft { animation: flow-pulse 4s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) {
+  .animate-flow, .animate-pulse-soft { animation: none; }
 }
